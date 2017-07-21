@@ -1,0 +1,66 @@
+<ion-view hide-nav-bar="true">
+    <h1 class="title">Sign Up!</h1>
+    <ion-content class="sigup_screen" scroll="true" has-header="false">
+        <div class="login">
+            <div class="container">
+                <form name="userForm" id="userForm" ng-submit="create_profile(user,userForm.$valid)" novalidate>
+                    <div class="list" style="padding-top:20px; backgrond:#fff;">
+                        <label class="item item-input item-stacked-label">
+                            <input type="text" placeholder="First Name" required ng-model="user.first_name" name="first_name" limit-char limit="30">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.first_name.$error.required">First Name is required.</span>
+                        <label class="item item-input item-stacked-label">
+                            <input type="text" placeholder="Last Name" required ng-model="user.last_name" name="last_name" limit-char limit="30">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.last_name.$error.required">Last Name is required.</span>
+                        <label class="item item-input item-stacked-label">
+                            <input type="email" placeholder="Email Address" required ng-model="user.email" name="email" limit-char limit="50">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.email.$error.required">Email is required.</span>
+                        <span style="color: red" ng-show="userForm.email.$error.email">Invalid email address.</span>
+                        <span style="color: red" ng-show="errorEmail != ''">{{errorEmail}}</span>
+                        <label class="item item-input item-stacked-label">
+                            <input type="number" placeholder="Mobile Number" required ng-model="user.phone_nbr" name="phone_nbr" minlength="10" limit-char limit="13">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.phone_nbr.$error.required">Phone Number is required.</span>
+                        <span style="color:red" ng-show="submitted && userForm.phone_nbr.$error.minlength">Minimum 10 chracters.</span>
+
+                        <label class="item item-input item-stacked-label">
+                            <ul class="lock_e">
+                                <li><img class="lock-n" src="img/lock.png"></li>
+                               <li><input type="Password" placeholder="Password" required ng-model="user.password" name="password" id="password" limit-char limit="20" minlength="5"></li>
+                            </ul>
+                            <!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.password.$error.required">Password is required.</span>
+                        <span style="color:red" ng-show="submitted && userForm.password.$error.minlength && userForm.password.$touched">Password minimum 5 characters</span>
+                        
+                        <label class="item item-input item-stacked-label">
+                            <ul class="lock_e">
+                                <li><img class="lock-n" src="img/lock.png"></li>
+                                <li><input type="Password" placeholder="Confirm Password" required ng-model="user.cpassword" required same-value-as="{{user.password}}" valid-cpassword="user.password" name="cpassword" pw-check="password" id="cpassword"></li>
+                                </ul>
+                            <!-- <i class="fa fa-lock" aria-hidden="true"></i> -->
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.cpassword.$error.required">Confirm Password is required.</span>
+                        <span class="error_msg" style="color:red" data-ng-show="userForm.cpassword.$error.sameValueAs">Passwords don't match.</span></span>
+                        <!--<div>
+                        <input type="checkbox" name="privacyPoli" value="privacyPoli">I accept the Terms of Service and Privacy Policy<br>-->
+                       <ion-checkbox>I accept the Terms of Service and Privacy Policy</ion-checkbox>
+                        <!--</div>-->
+                        <button class="button button-balanced" style="margin-top:10px;">SIGN UP</button>
+                    </div>
+                </form>
+                <div class="footer_sign text-center">
+                    <p style="color:#fff; font-size:17px;">Already Registered ?
+                    <br> Click to <span ng-click="loginGo()" style="color:#8ebf29; font-size:16px;">Login</span> here</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,118 @@
+<ion-view title="Create Profile" can-swipe-back="false" hide-back-button="true">
+    <ion-content class="createprofile_screen" style="background:#f5f5f5;" scroll="true" has-header="false">
+        <div class="login create_profile" style="background:#f5f5f5;">
+            <div class="padding">
+                <div class="list padding" style="background:#fff; border:1px solid #ccc;  margin:auto; ">
+                    <form name="userForm" id="userForm" novalidate>
+                        <div class="user_image text-center" style="margin-top:20px;">
+                            <img ng-click="chooseimage()" ng-if="imageURI == undefined" src="img/user.png" style="border-radius:50%; width:80px; height:80px;">
+                            <br>
+                            <img ng-click="chooseimage()" ng-if="imageURI != undefined" width="80" height="80" ng-src="{{imageURI}}" style="border-radius:50%;">
+                            <br>
+                            <br>
+                            <a ng-if="imageURI == undefined" ng-click="chooseimage()">Add Image</a>
+                            <a ng-if="imageURI != undefined" ng-click="chooseimage()">Change Image</a>
+                        </div>
+                        <div class="list">
+                            <label class="item item-radio">
+                                <input name="gender" ng-model="user.gender" required value="m" type="radio">
+                                <div class="radio-content">
+                                    <div class="item-content"><span>Male</span>
+                                    </div>
+                                    <i class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+                                </div>
+                            </label>
+                            <label class="item item-radio">
+                                <input name="gender" ng-model="user.gender" required value="f" type="radio">
+                                <div class="radio-content">
+                                    <div class="item-content"><span>Female</span>
+                                    </div>
+                                    <i class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+                                </div>
+                            </label>
+                            <span style="color:red" ng-show="submitted && userForm.gender.$error.required">Gender is required.</span>
+                        </div>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="date" placeholder="Date of Birth" name="DOB" required ng-model="user.DOB" id="datepicker" ng-change="checkDate(user.DOB)" class="datepicker-input" data-date-format="yyyy-mm-dd">
+                            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                        </label>
+                         <span style="color:red" ng-show="submitted && userForm.DOB.$error.required">DOB is required.</span>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="text" placeholder="Experience" name="experience" ng-model="user.experience" required>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.experience.$error.required">Experience is required.</span>
+                        <label class="item item-input item-stacked-label" style="border:none; margin-bottom:0;">
+                            <span class="input-label" style="padding-left: 15px;">Job Type</span>
+                            <i class="fa fa-briefcase" aria-hidden="true"></i>
+                        </label>
+                        <div class="list">
+                            <label class="item item-radio">
+                                <input name="job_type" ng-model="user.job_type" required value="Child Care" type="radio">
+                                <div class="radio-content">
+                                    <div class="item-content"><span>Child Care</span>
+                                    </div>
+                                    <i class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+                                </div>
+                            </label>
+                            <label class="item item-radio">
+                                <input name="job_type" ng-model="user.job_type" required value="Pet Care" type="radio">
+                                <div class="radio-content">
+                                    <div class="item-content"><span>Pet Care</span>
+                                    </div>
+                                    <i class="radio-icon disable-pointer-events icon ion-checkmark"></i>
+                                </div>
+                            </label>
+                            <span style="color:red" ng-show="submitted && userForm.job_type.$error.required">JobType is required.</span>
+                        </div>
+
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="tel" placeholder="Price" name="price" ng-model="user.price" required>
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.price.$error.required">Price is required.</span>
+
+                        <!--<ion-list>
+                        <ion-radio ng-model="choice1" ng-value="'C'">Child Care</ion-radio>
+                        <ion-radio ng-model="choice1" ng-value="'P'">Pet Care</ion-radio>
+                        </ion-list>-->
+                        <label class="item item-input item-stacked-label">
+                            <input type="text" placeholder="Enter City" name="city" ng-model="user.city" required class="ng-pristine ng-valid" id="searchTextField" autocomplete="on" runat="server" name="location" ng-focus="disableTap()">
+                            <i class="fa fa-building" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.city.$error.required">City is required.</span>
+
+                        <label class="item item-input item-stacked-label">
+                       <!--  <label class="item item-input item-select"> -->
+                            <!-- <select id="country" name="country" ng-model="user.country" required>
+                                <option value="country" selected data-default>{{country}}</option>
+                            </select> -->
+                            <input type="text" id="country" placeholder="Country" required ng-model="user.country" name="country">
+                            <i class="fa fa-globe" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.country.$error.required">Country is required.</span>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="text" placeholder="About me" name="about_me" ng-model="user.about_me" required>
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.about_me.$error.required">About Me is required.</span>
+                        
+                        <div class="item item-input item-stacked-label" style="border-bottom:none;">
+                            <p class="upload_pic">Upload Document</p>
+                            <i class="fa fa-upload new1" aria-hidden="true"></i>
+                            <button ng-click="upload_document()" class="upld">Upload</button>
+                            <img ng-if="imageUri" src="{{imageUri}}" style=" height: 70px; width: 70px;">
+                        </div>
+                        
+                </div>
+                <button class="button button-balanced" ng-click="go_home(user,userForm.$valid)" style="margin-top:10px;">CREATE PROFILE</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

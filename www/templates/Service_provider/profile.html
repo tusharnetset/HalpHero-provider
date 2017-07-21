@@ -1,0 +1,74 @@
+<ion-view title="Profile" hide-nav-bar="true" ng-init="profiledata()">
+    <div class="bar bar-header bar-stable">
+        <a class="button icon-left" ng-click="myGoBack()"><i class="ion-android-arrow-back" aria-hidden="true"></i></a>
+        <h1 class="title">Profile</h1>
+        <a class="button icon-right" ng-click="go_edit_profile()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </a>
+    </div>
+    <ion-content class="profile_screen" style="background:#f5f5f5;" scroll="true" has-header="false">
+        <div class="profile" style="background:#f5f5f5;">
+            <div class="padding">
+                <div class="list padding" style="margin:auto; ">
+                    <div class="user_image text-center" style="margin-top:35px;">
+                       <!--<img ng-if="userdataa.pic" src="{{userdataa.pic}}">-->
+
+                        <img ng-if="!userdataa.pic" src="img/user.png" style="border-radius:100%; height: 90px; width: 90px;">
+                        <br>
+                        <img ng-if="userdataa.pic" style="border-radius:100%; height: 90px; width: 90px;" ng-src="{{img_url+userdataa.pic}}">
+                    </div>
+                    <div class="list" style="background:#fff; border:1px solid #ccc;">
+                        <div class="item item-icon-left">
+                            <i class="icon fa fa-user"></i>
+                            <h2>First Name</h2>
+                            <p>{{userdataa.first_name}}</p>
+                        </div>
+                        <div class="item item-icon-left">
+                            <i class="icon fa fa-user"></i>
+                            <h2>Last Name</h2>
+                            <p>{{userdataa.last_name}}</p>
+                        </div>
+                        <div class="item item-icon-left">
+                            <i class="icon fa fa-user"></i>
+                            <h2>Email</h2>
+                            <p>{{userdataa.email}}</p>
+                        </div>
+                        <div class="item item-icon-left">
+                            <i class="icon fa fa-phone"></i>
+                            <h2>Contact Number</h2>
+                            <p>{{userdataa.phone_nbr}}</p>
+                        </div>
+                        <div class="item item-icon-left">
+                            <i class="icon fa fa-map-marker"></i>
+                            <h2>Location</h2>
+                            <p>{{userdataa.city}}</p>
+                        </div>
+                        <div class="item item-icon-left text-wrap">
+                            <i class="icon fa fa-user"></i>
+                            <h2>About Me</h2>
+                            <p>{{userdataa.about_me}}</p>
+                        </div>
+                        <div class="item item-icon-left text-wrap">
+                            <i class="icon fa fa-user"></i>
+                            <h2>Experience</h2>
+                            <p>{{userdataa.experience}}</p>
+                        </div>
+                        <div class="item item-icon-left text-wrap">
+                            <i class="icon fa fa-money" aria-hidden="true"></i>
+                            <h2>Price</h2>
+                            <p>{{userdataa.price}}</p>
+                        </div>
+                        <div class="item item-icon-left text-wrap">
+                            <i class="icon fa fa-briefcase" aria-hidden="true"></i>
+                            <h2>Job Type</h2>
+                            <p>{{userdataa.job_type}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="list job_detail padding text-center">
+                    <button class="button button-balanced" ng-click="changePasswordG()">CHANGE PASSWORD</button>
+                    <button ng-click="logout()" class="button button-dark">Logout</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

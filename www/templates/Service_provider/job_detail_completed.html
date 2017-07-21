@@ -1,0 +1,56 @@
+
+<ion-view title="{{com}}" hide-nav-bar="true" ng-init="jDetailsCom()">
+  <div class="bar bar-header bar-stable">
+  <a class="button icon-left" ng-click="myGoBack()"><i class="ion-android-arrow-back" aria-hidden="true"></i>
+</a>
+  <h1 class="title">{{com}}</h1>
+</div>
+  <ion-content class="job_detail_screen  has-header" style="background:#f5f5f5;" scroll="true" has-header="false">
+  <div class="job_detail">
+  	<div class="list padding">
+  		<h1 class="text-center" style="padding:20px 0;">{{allJobDetailsComplet.job_name}}</h1>
+      <p ng-if="allJobDetailsComplet.price_type == 'F'" class="job_type">Fixed</p>
+  		<p ng-if="allJobDetailsComplet.price_type == 'H'" class="job_type">Hourly</p>
+  		<p class="price">Price:<span style="color:#8ebf29;">$2,98</span></p>
+  		<p class="date_cont"><i class="fa fa-calendar" aria-hidden="true"></i>
+      {{allJobDetailsComplet.job_date | date:' d MMM yyyy'}},{{allJobDetailsComplet.job_date | date:' h:mm:ss a'}}</p>
+  		<p class="date_cont location"><i class="fa fa-map-marker" aria-hidden="true"></i>
+      {{allJobDetailsComplet.city}}, {{allJobDetailsComplet.country}} <br>
+      {{allJobDetailsComplet.location}}</p>
+  	</div>
+  	<div class="list job_description padding">
+  		<h4>Description</h4>
+  		<p>{{allJobDetailsComplet.job_desc}}</p>
+  	</div>	
+
+
+      <div class="padding client_cont">
+      <h4 class="title_client">Client</h4>
+       <a class="item item-avatar item-icon-right" ng-click="compJmessage(jobCreatrCompleteJo.id)" >
+         <img ng-if="!jobCreatrCompleteJo.pic" src="img/client.png">
+         <img ng-if="jobCreatrCompleteJo.pic" ng-src="{{img_url+jobCreatrCompleteJo.pic}}">
+         <h2>{{jobCreatrCompleteJo.first_name}} {{jobCreatrCompleteJo.last_name}}</h2>
+         <div class="icon msg_icn" ><i class=" fa fa-comment-o" aria-hidden="true" style="margin-right:5px;"></i>Message</div>
+      </a>
+    </div>  
+
+    <div class="list  padding text-center">
+     <button class="button button-balanced" ng-click="viewServRec(allJobDetailsComplet.job_id,jobCreatrCompleteJo.id)">VIEW SERVICE RECEIPT</button>
+   </div>
+ 	</div>
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

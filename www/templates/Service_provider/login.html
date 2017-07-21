@@ -1,0 +1,41 @@
+<ion-view hide-nav-bar="true">
+    <ion-content class="sigin_screen" scroll="" has-header="true">
+        <div class="login">
+            <div class="container">
+                <form name="userForm" ng-submit="loginUser(user,userForm.$valid)" novalidate>
+                    <div class="list">
+                        <label class="item item-input item-stacked-label">
+                            <input type="email" placeholder="Email" required ng-model="user.email" name="email">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" data-ng-show="submitted && userForm.email.$error.required">Email is required</span>
+                        <!-- <span style="color:red" ng-show="errorUserName != '' && !userForm.email.$error.required">{{errorUserName}}</span> -->
+                        <span style="color: red" data-ng-show="submitted && userForm.email.$error.email">Invalid email address</span>
+                        <label class="item item-input item-stacked-label">
+                        <ul class="lock_e">
+                            <li><img class="lock-n" src="img/lock.png"></li>
+                            <li><input type="Password" placeholder="Password" required ng-model="user.password" name="password"></li>
+                            </ul>
+                            <!-- <i class="fa fa-lock" aria-hidden="true"></i>-->
+                        </label>
+                        <span style="color: red" data-ng-show="submitted && userForm.password.$error.required ">Password is required</span>
+                        <!-- <span style="color: red" ng-show="errorPassword != '' && !userForm.password.$error.required">{{errorPassword}}</span> -->
+                        <button class="button button-balanced">LOGIN</button>
+                        <p ng-click="forgotpass()" class="forget_pas text-center" style="margin-top:40px; color:#fff; font-size:18px;">Forgot Your Password?</p>
+                    </div>
+                </form>
+                <div class="footer text-center">
+                    <p style="width:100%; color:#fff; position:relative; font-size:16px;" class="sign_opt">Or Sign in with</p>
+                    <div class="button-bar" style="justify-content: center;">
+                        <a class="facbook_link" ng-click="facebookLogin()"><img src="img/fb.png"></a>
+                        <a class="facbook_link" ng-click="googleLogin()"><img src="img/tw.png"></a>
+                        <!-- <a class="facbook_link" ng-click="inapp()"><img src="img/tw.png"></a> -->
+                    </div>
+                    <p style="color:#fff; font-size:17px;">Don't Have an Account ?
+                        <br> Click to <span style="color:#8ebf29; font-size:16px;" ng-click="signup()">Sign up </span>here</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

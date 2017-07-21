@@ -1,0 +1,40 @@
+
+<ion-view title="Completed Jobs" hide-nav-bar="true" ng-init="compJob()">
+  <div class="bar bar-header bar-stable">
+     <a class="button icon-left" ng-click="go_profile()"><i class="fa fa-user" aria-hidden="true"></i>
+    </a>
+      <h1 class="title">Completed Jobs</h1>
+      <a class="button icon-right" ng-click="go_message()"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+    </a>
+  </div>
+  <ion-content class="home_screen padding" style="background:#f5f5f5;" scroll="true" has-header="false">
+    <ion-refresher pulling-text="Loading...." on-refresh="doRefresh()"></ion-refresher>
+    <div class="home_list" style="padding-top:55px;">
+    	<ul ng-if="compJ.job_status == 'Completed'" ng-repeat="compJ in completeJ | orderBy: 'date_created':true" class="list">
+        <li class="item item-icon-right" ng-click="job_detail_completed(compJ.id)">
+          <div class="item-text-wrap">
+         	  <h2>{{compJ.job_name}}</h2>
+       	    <div class="button-bar">
+    			     <p class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{compJ.job_date | date:'d MMM yyyy'}}</p>
+    			     <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{compJ.job_time | date: "h:mma"}}</p>
+    		    </div>
+    	      <p class="detail_job">{{compJ.job_desc}}</p>
+      		</div>
+      		  <i class="icon ion-ios-arrow-right"></i>
+        </li>
+    <!--<li class="item item-icon-right">
+    	    <div class="item-text-wrap">
+           	<h2>Need a Pet Trainer</h2>
+         	  <div class="button-bar">
+  			      <p class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i>9 Dec 2016</p>
+      			  <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>2:00 pm</p>
+    		    </div>
+  		      <p> Train animals for riding, harness, security, performance, or obedience, or assisting 
+    		    persons with disabilities.</p>
+	  		  </div>
+	  		  <i class="icon ion-ios-arrow-right"></i>
+        </li> -->
+      </ul>
+    </div>
+  </ion-content>
+</ion-view>

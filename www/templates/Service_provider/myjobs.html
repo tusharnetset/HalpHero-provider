@@ -1,0 +1,82 @@
+
+<ion-view title="{{myJob}}" hide-nav-bar="true" ng-init="myJobsIn()">
+  <div class="bar bar-header bar-stable">
+     <a class="button icon-left" ng-click="go_profile()"><i class="fa fa-user" aria-hidden="true"></i>
+    </a>
+      <h1 class="title">{{myJob}}</h1>
+      <a class="button icon-right" ng-click="go_message()"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+    </a>
+  </div>
+  <ion-content class="job_detail_screen has-header" style="background:#f5f5f5;">
+    <ion-refresher pulling-text="Loading...." on-refresh="doRefresh()"></ion-refresher>
+     
+    <p class="job_confirm padding" style="background:#8ebf29;"><span style="margin-right:10px;"><i class="fa fa-hourglass-start" aria-hidden="true"></i></span>Inprogress Jobs</p>
+        <div ng-show="activ.job_status == 'Active'" class="home_list item-text-wrap padding job_cond" ng-repeat="activ in allJobSt" ng-if="allJobSt.length" ng-click="jobDetailInprogress(activ.id)">
+          <p ng-if="activ.price_type == 'H'" style="background:#8ebf29;" class="job_type">Hourly</p>
+          <p ng-if="activ.price_type == 'F'" style="background:#8ebf29;" class="job_type">Fixed</p>
+          <h2>{{activ.job_name}}</h2>
+          <div class="button-bar">
+             <p class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{activ.job_date | date:'d MMM yyyy'}}</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{activ.job_time | date: "h:mma"}}</p>
+          </div>
+           <p class="detail_job">{{activ.job_desc}}</p>
+            <div class="wait_icn"><img src="img/process.png"></div>
+        </div>
+        <div style="text-align: center;" ng-if="!allJobSt.length">
+          <img src="img/not_found.png">
+        </div>
+
+
+     <p class="job_confirm padding" style="background:#fe602e;"><span  style="margin-right:10px;"><i class="fa fa-bullhorn" aria-hidden="true"></i>
+      </span>Upcoming Jobs</p>
+
+       <div ng-show="jobs.job_status == 'Upcoming'" class="home_list item-text-wrap padding job_cond" ng-repeat="jobs in allJobSt" ng-if="allJobSt.length" ng-click="jobDetailsUpcoming(jobs.id)">
+          <p ng-if="jobs.price_type == 'H'" style="background:#fe602e;" class="job_type">Hourly</p>
+          <p ng-if="jobs.price_type == 'F'" style="background:#fe602e;" class="job_type">Fixed</p>
+          <h2>{{jobs.job_name}}</h2>
+          <div class="button-bar">
+             <p class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{jobs.job_date | date:' d MMM yyyy'}}</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{jobs.job_time | date: "h:mma"}}</p>
+          </div>
+           <p class="detail_job">{{jobs.job_desc}}</p>
+        </div>
+        <div style="text-align: center;" ng-if="!allJobSt.length">
+          <img src="img/not_found.png">
+        </div>
+       
+
+
+       <p class="job_confirm padding"><span style="margin-right:10px;"><i class="fa fa-hourglass-start" aria-hidden="true"></i>
+      </span>Waiting for Client Response</p>
+       <div ng-show="wait.job_status == 'Awaiting_Response'" ng-repeat="wait in allJobSt" class=" home_list item-text-wrap padding" ng-if="allJobSt.length" ng-click="jobDetailWaiting(wait.id)">
+          <p ng-if="wait.price_type == 'H'" style="background:hsl(42, 100%, 50%) none repeat scroll 0 0;" class="job_type">Hourly</p>
+          <p ng-if="wait.price_type == 'F'" style="background:hsl(42, 100%, 50%) none repeat scroll 0 0;" class="job_type">Fixed</p>
+          <h2>{{wait.job_name}}</h2>
+          <div class="button-bar">
+             <p class="date"><i class="fa fa-calendar-o" aria-hidden="true"></i>{{wait.job_date | date:' d MMM yyyy'}}</p>
+            <p class="time"><i class="fa fa-clock-o" aria-hidden="true"></i>{{wait.job_time | date: "h:mma"}}</p>
+          </div>
+           <p  class="detail_job">{{wait.job_desc}}</p>
+        </div>
+        <div style="text-align: center;" ng-if="!allJobSt.length">
+          <img src="img/not_found.png">
+        </div>
+
+
+        
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+<ion-view title="Receipt" hide-nav-bar="true" ng-init="receiptProvide()">
+	<div class="bar bar-header bar-stable">
+	  	<a class="button icon-left" ng-click="myGoBack()"><i class="ion-android-arrow-back" aria-hidden="true"></i>
+		</a>
+	  	<h1 class="title">Receipt</h1>
+	</div>
+  <ion-content class="recipt_screen padding has-header" style="background:#f5f5f5;" scroll="true" has-header="true">
+	<div class="reciept_cont" style="background:#f5f5f5;">
+		<div class="padding">
+			<div class="list padding" style="background:#fff; border:1px solid #ccc;  margin:auto; padding:20px 10px;">
+				<h2 class="title_recipt text-center">{{receiptData.job_name}}</h2>
+			 	
+			    	<div class="list recipt_detail">
+			    		<li class="item item-icon-left">
+		    			  	<i class="icon fa fa-calendar"></i>
+		    			  	<h2>Date</h2>
+		    			  	<p>{{s_job}} - {{e_job}}</p>
+			  			</li>
+			  			<li class="item item-icon-left">
+		    			  	<i class="icon fa fa-map-marker"></i>
+		    			  	<h2>Location</h2>
+		    			  	<p>{{receiptData.location}}</p>
+			  			</li>
+			  			<li class="item item-icon-left">
+		    			  	<i class="icon fa fa-clock-o"></i>
+		    			  	<h2>Time</h2>
+		    			  	<p>{{receiptData.hours}}</p>
+			  			</li>
+
+			  			<li ng-if="receiptData.jobType == 'F'" class="item item-icon-left">
+		    			  	<i class="icon fa fa-money"></i>
+		    			  	<h2>Total Cost<span style="font-size:14px">(${{receiptData.price}} Fixed)</span></h2>
+		    			  	<p>$ {{receiptData.total_amount}} </p>
+			  			</li>
+
+			  			<li ng-if="receiptData.jobType == 'H'" class="item item-icon-left">
+		    			  	<i class="icon fa fa-money"></i>
+		    			  	<h2>Total Cost<span style="font-size:14px">(${{receiptData.price}} Per Hours)</span></h2>
+		    			  	<p>$ {{receiptData.total_amount}} </p>
+			  			</li>
+
+			 		</div>
+			  	
+			  </div>
+			   	<div ng-if="receiptData.status == 'h'" class="list job_detail padding text-center">
+		 			<button disabled="" class="button button-balanced" style="margin-top:10px;">PENDING PAYMENT</button>
+				</div>
+
+				<div ng-if="receiptData.status == 'cp'" class="list job_detail padding text-center">
+		 			<button disabled="" class="button button-balanced" ng-click="go_paymentCom()" style="margin-top:10px;">PAYMENT COMPLETED</button>
+				</div>
+		</div>	
+	</div>		
+  </ion-content>
+</ion-view>

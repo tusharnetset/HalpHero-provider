@@ -1,0 +1,45 @@
+<ion-view view-title="Conversation" ng-init="chatConver()">
+  <div class="bar bar-header bar-stable">
+    <a class="button icon-left" ng-click="myGoBack()"><i class="ion-android-arrow-back" aria-hidden="true"></i>
+    </a>
+    <h1 class="title">Conversation</h1>
+  </div>
+  <ion-content class="padding">
+
+    <ol class="chat" ng-repeat="mess in chatDta">
+      <li ng-if="mess.reciver_id && mess.sender_id==othr_id" class="other" >
+        <div class="name"><p>{{mess.name}}</p></div>
+        <div ng-if="mess.pic" class="avatar"><img src="{{mess.pic}}" draggable="false"/></div>
+        <div ng-if="!mess.pic" class="avatar"><img src="img/client.png" draggable="false"/></div>
+        <div class="msg">
+        <p>{{mess.message}}</p>
+        <time>{{mess.date_created | timeAgo}}</time>
+        </div>
+         <div class="clearfix"></div>
+      </li>
+
+
+      <li ng-if="mess.sender_id==my_id" class="self">
+        <div class="name"><p>{{mess.name}}</p></div>
+        <div ng-if="mess.pic" class="avatar"><img src="{{mess.pic}}" draggable="false"/></div>
+        <div ng-if="!mess.pic" class="avatar"><img src="img/client.png" draggable="false"/></div>
+        <div class="msg">
+        <p>{{mess.message}}</p> 
+        <time>{{mess.date_created | timeAgo}}</time>
+        </div>
+        <div class="clearfix"></div>
+      </li>
+      
+    </ol>
+<div class="clearfix"></div>
+  </ion-content>
+  <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="message" on-focus="inputUp()" on-blur="inputDown()"/>
+    </label>
+    <div class="footer-btn-wrap">
+      <button class="button ion-paper-airplane" ng-disabled="!(!!message)" ng-click="sendMessage(message); message = '';">
+      </button>
+    </div>
+  </ion-footer-bar>
+</ion-view>

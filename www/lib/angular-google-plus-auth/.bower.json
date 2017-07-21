@@ -1,0 +1,21 @@
+{
+  "name": "angular-google-plus-auth",
+  "authors": [
+    "Luisa Teixeira <luisa.teixeira@gmail.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "angular": "https://github.com/angular/bower-angular.git#~1.3.13"
+  },
+  "homepage": "https://github.com/luisateixeira/angular-google-plus-auth",
+  "_release": "61ff7f30c6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "61ff7f30c609ac34c9c0922582b55f017faebfe3"
+  },
+  "_source": "https://github.com/luisateixeira/angular-google-plus-auth.git",
+  "_target": "*",
+  "_originalSource": "angular-google-plus-auth",
+  "_direct": true
+}

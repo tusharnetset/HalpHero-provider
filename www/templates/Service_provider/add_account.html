@@ -1,0 +1,52 @@
+<ion-view view-title="Bank Details" can-swipe-back="false" hide-back-button="true">
+    <ion-content class="sigup_screen padding has-header" scroll="true" has-header="true">
+        <div class="login">
+            <div class="container">
+                <form name="userForm" id="userForm" novalidate>
+                    <div class="list" style="padding-top:20px; backgrond:#fff;">
+                        <label class="item item-input item-stacked-label">
+                            <input type="text" placeholder="Account Name" required ng-model="user.account_name" name="account_name" limit-char limit="30">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.account_name.$error.required">Account name is required.</span>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="text" placeholder="Bank Name" required ng-model="user.bank_name" name="bank_name" limit-char limit="30">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.bank_name.$error.required">Bank Name is required.</span>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="number" placeholder="Account Number" required ng-model="user.account_number" name="account_number" limit-char limit="16">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.account_number.$error.required">Account Number is required.</span>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="number" placeholder="Confirm Account Number" ng-model="caccountn" required same-value-as="{{user.account_number}}" valid-caccountn="user.account_number" name="caccountn" id="caccountn" limit-char limit="16">
+                            <i class="fa fa-mobile" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.confirm_accountn.$error.required">Confirm Account Number is required.</span>
+                        <span class="error_msg" style="color:red" data-ng-show="userForm.caccountn.$error.sameValueAs">Account Number don't match.</span></span>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="number" placeholder="Routing Number" required ng-model="user.routing_number" name="routing_number" id="password" limit-char limit="20">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.routing_number.$error.required">Routing Number is required.</span>
+
+                        <label class="item item-input item-stacked-label">
+                            <input type="number" placeholder="Confirm Routing Number" required ng-model="crountingnumber" required same-value-as="{{user.routing_number}}" valid-crountingnumber="user.routing_number" name="crountingnumber" id="crountingnumber">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </label>
+                        <span style="color:red" ng-show="submitted && userForm.crountingnumber.$error.required">Confirm Routing Number is required.</span>
+                         <span class="error_msg" style="color:red" data-ng-show="userForm.crountingnumber.$error.sameValueAs">Routing Number don't match.</span></span>
+                         
+                        <button class="button button-balanced" ng-click="addBankDetail(user,userForm.$valid)" style="margin-top:10px;">Add Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </ion-content>
+</ion-view>

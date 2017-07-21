@@ -1,0 +1,82 @@
+<ion-view title="{{jobDetails}}" hide-nav-bar="true" ng-init="Alljodetail()">
+<div class="bar bar-header bar-stable">
+  <a class="button icon-left" ng-click="myGoBack()"><i class="ion-android-arrow-back" aria-hidden="true"></i>
+</a>
+  <h1 class="title">{{jobDetails}}</h1>
+</div>
+  <ion-content class="job_detail_screen  has-header" style="background:#f5f5f5;" scroll="true" >
+  <div class="job_detail">
+  	<div class="list padding">
+  		<h1 class="text-center" style="padding:20px 0;">{{allJobDetails.job_name}}</h1>
+      <p ng-if="allJobDetails.price_type == 'F'" class="job_type">Fixed</p>
+  		<p ng-if="allJobDetails.price_type == 'H'" class="job_type">Hourly</p>
+  		<p class="price">Price:<span style="color:#8ebf29;">${{allJobDetails.price}}</span></p>
+  		<p class="date_cont"><i class="fa fa-calendar" aria-hidden="true"></i>{{allJobDetails.job_date | date:' d MMM yyyy'}},{{allJobDetails.job_time | date:' h:mm:ss a'}}</p>
+  		<p class="date_cont location"><i class="fa fa-map-marker" aria-hidden="true"></i>{{allJobDetails.location}}, {{allJobDetails.country}}</p>
+  	</div>
+  	<div class="list job_description padding">
+  		<h4>Description</h4>
+  		<p>{{allJobDetails.job_desc}}</p>
+  	</div>	
+
+     <div ng-if="allJobDetails.job_status == 'Awaiting_Response'" class="padding client_cont">
+      <h4 class="title_client">Client</h4>
+       <a class="item item-avatar item-icon-right" ng-click="goMessageAp(jobCreatr.id)">
+         <img ng-if="!jobCreatr.pic" src="img/client.png">
+         <img ng-if="jobCreatr.pic" ng-src="{{img_url+jobCreatr.pic}}">
+         <h2>{{jobCreatr.first_name}} {{jobCreatr.last_name}}</h2>
+         <div class="icon msg_icn"><i class="fa fa-comment-o" aria-hidden="true" style="margin-right:5px;"></i>Message</div>
+      </a>
+    </div>
+
+
+    <div ng-if="allJobDetails.job_status == 'Upcoming'" class="padding client_cont">
+      <h4 class="title_client">Client</h4>
+       <a class="item item-avatar item-icon-right" ng-click="goMessageAp(jobCreatr.id)">
+         <img ng-if="!jobCreatr.pic" src="img/client.png">
+         <img ng-if="jobCreatr.pic" ng-src="{{img_url+jobCreatr.pic}}">
+          <h2>{{jobCreatr.first_name}} {{jobCreatr.last_name}}</h2>
+         <div class="icon msg_icn"><i class=" fa fa-comment-o" aria-hidden="true" style="margin-right:5px;"></i>Message</div>
+      </a>
+    </div>
+
+
+    <div ng-if="allJobDetails.job_status == 'Active'" class="padding client_cont">
+      <h4 class="title_client">Client</h4>
+       <a class="item item-avatar item-icon-right" ng-click="goMessageAp(jobCreatr.id)">
+         <img src="img/client.png">
+          <h2>{{jobCreatr.first_name}} {{jobCreatr.last_name}}</h2>
+         <div class="icon msg_icn"><i class=" fa fa-comment-o" aria-hidden="true" style="margin-right:5px;"></i>Message</div>
+      </a>
+    </div>
+
+    <div ng-if="allJobDetails.job_status == 'Awaiting_Response'" class="list padding text-center">
+      <button ng-disabled="allJobDetails.job_status == 'Awaiting_Response'" class="button button-light">WAITING CLIENT RESPONSE</button>
+    </div>
+
+    <div ng-if="allJobDetails.job_status == 'Upcoming'" class="list  padding text-center">
+      <button class="button button-light" ng-click="startJobDe(allJobDetails.job_id)">START JOB</button>
+      <button class="button button-dark" ng-click="canceljobA(allJobDetails.job_id)">Cancel</button>
+    </div>
+
+    <div ng-if="allJobDetails.job_status == 'Active'" class="list padding text-center">
+      <button class="button button-light" ng-click="endJob(allJobDetails.job_id)">END JOB</button>
+    </div> 
+
+ 	</div>
+  </ion-content>
+</ion-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

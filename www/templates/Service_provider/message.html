@@ -1,0 +1,26 @@
+
+<ion-view title="Message List" hide-nav-bar="true" ng-init="getLastConver()" >
+<div class="bar bar-header bar-stable">
+  <a class="button icon-left" ng-click="myGoBack()"><i class="ion-android-arrow-back" aria-hidden="true"></i>
+</a>
+  <h1 class="title">Message List</h1>
+</div>
+  <ion-content class="message_screen padding has-header" style="background:#f5f5f5; height:100%;" scroll="true" >
+   <ion-refresher pulling-text="Loading...." on-refresh="doRefresh()"></ion-refresher>
+	<div class="message" style="background:#f5f5f5; height:100%;">
+			 	<div class="list padding" style="background:#fff; border:1px solid #ccc; height:100%;margin-top:20px;">
+			    <div ng-repeat="mess in allMessages" class="item item-avatar item-icon-right" ng-if="allMessages.length" ng-click="chat_go(mess.reciver_id)">
+			    	<img ng-if="mess.pic" src="{{img_url+mess.pic}}">
+			    	<img ng-if="!mess.pic" src="img/client.png">
+			      <h2 style="margin-top: 9px;">{{mess.first_name}} {{mess.last_name}}</h2>
+			     <i class="icon ion-chevron-right"></i>
+			    </div>
+
+			    <div style="text-align: center;" ng-if="!allMessages.length">
+		    		<img src="img/not_found.png">
+		    	</div>
+			</div>
+		</div>	
+	</div>		
+  </ion-content>
+</ion-view>
